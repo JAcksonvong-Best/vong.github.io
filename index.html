@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Point Web Page</title>
+<style>
+    /* General styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1, h2 {
+        color: #333;
+        text-align: center;
+    }
+    p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Navigation styles */
+    nav {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #ff9900;
+    }
+
+    /* Motion effects */
+    .section {
+        margin: 40px 0;
+        text-align: center;
+    }
+    .section img {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    .section img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Cool cursor effect */
+    .cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #ff9900;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+        transform: translate(-50%, -50%); /* Center the cursor */
+    }
+
+    /* Back to top button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: none;
+        z-index: 9999;
+    }
+</style>
+</head>
+<body>
+<div class="cursor"></div>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">App one</a>
+    <a href="#services">App two</a>
+    <a href="#portfolio">Web</a>
+    <a href="#contact">H5</a>
+</nav>
+<div class="container">
+    <section id="home" class="section">
+        <h1>欢迎来到我的个人作品集网站</h1>
+        <p>UI Portfolio</p>
+
+        <img src="https://img2.imgtp.com/2024/03/22/5BlGOBKZ.jpg" alt="Image 1" loading="lazy">
+    </section>
+    <section id="about" class="section">
+        <h2>有谱么（改版）</h2>
+        <p>音乐辅助工具和社交属性APP</p>
+  
+        <img src="https://img2.imgtp.com/2024/03/22/6xQmwQUH.jpg" alt="Image 2" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/9YqNWIOB.jpg" alt="Image 3" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/4KU6LzkB.jpg" alt="Image 4" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/oi0QQ3XE.jpg" alt="Image 5" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/C1vuaq0m.jpg" alt="Image 6" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/6MEcZoCu.jpg" alt="Image 7" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/k1XL4PAu.jpg" alt="Image 8" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/B14VI5E2.jpg" alt="Image 9" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/TL0O8gqx.jpg" alt="Image 10" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/A5G6Mv15.jpg" alt="Image 1" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/t4pqmd9a.jpg" alt="Image 2" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/RRgkbFoM.jpg" alt="Image 3" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/MOWCn0Of.jpg" alt="Image 4" loading="lazy">
+    </section>
+    <section id="services" class="section">
+        <h2>友动力</h2>
+        <p>轻量化的运动健身/社交软件</p>
+
+        <img src="https://img2.imgtp.com/2024/03/22/Yo4aDPFn.jpg" alt="Image 5" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/iCeAcQhS.jpg" alt="Image 6" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/rcvkbN38.jpg" alt="Image 7" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/n0WpvQhd.jpg" alt="Image 8" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/sccsqI5g.jpg" alt="Image 9" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/nXIXiZCg.jpg" alt="Image 10" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/vEAkNrjg.jpg" alt="Image 1" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/BYI2tsJK.jpg" alt="Image 2" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/zn4HWCME.jpg" alt="Image 3" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/2LTNFnR1.jpg" alt="Image 4" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/HK7JtNtf.jpg" alt="Image 5" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/MDyKxXIF.jpg" alt="Image 6" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/b6BWAto3.jpg" alt="Image 7" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/7Cvqs0mR.jpg" alt="Image 8" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/WBzDrH3r.jpg" alt="Image 9" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/YpkbU7M2.jpg" alt="Image 10" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/tW4Qd3Pw.jpg" alt="Image 1" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/njLSUu1j.jpg" alt="Image 2" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/GODyQZr3.jpg" alt="Image 3" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/GlHNEEOe.jpg" alt="Image 4" loading="lazy">
+    </section>
+    <section id="portfolio" class="section">
+        <h2>律所办公OA系统</h2>
+        <p>该系统适用于律师/法务团队进行案件管理、项目管理及团队的协作</p>
+       
+        <img src="https://img2.imgtp.com/2024/03/22/x3MyomBb.jpg" alt="Image 5" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/mhU1oB2T.jpg" alt="Image 6" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/mgZNDHT8.jpg" alt="Image 7" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/CB73nZWt.jpg" alt="Image 8" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/Wq9jGM68.jpg" alt="Image 9" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/N5xlQzVQ.jpg" alt="Image 10" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/OqHk4Ifv.jpg" alt="Image 1" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/jYjow3Nb.jpg" alt="Image 2" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/VaiDXdaD.jpg" alt="Image 3" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/ySW7BBLB.jpg" alt="Image 4" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/JBLkN3fP.jpg" alt="Image 5" loading="lazy">
+
+        <h2>银色高地酒庄网页</h2>
+        <p>作为中国优质葡萄酒的先驱，银色高地一直致力于质量和可持续性</p>
+
+        <img src="https://img2.imgtp.com/2024/03/22/HOVUVxKT.jpg" alt="Image 6" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/2lWuPob7.jpg" alt="Image 7" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/r59G6hvy.jpg" alt="Image 8" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/XnMNG8kQ.jpg" alt="Image 9" loading="lazy">
+    </section>
+    <section id="contact" class="section">
+        <h2>运营H5页面</h2>
+        <p>城市夜骑侠主题活动运营</p>
+ 
+        <img src="https://img2.imgtp.com/2024/03/22/ozvRDK2J.jpg" alt="Image 10" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/0x7YtVwi.jpg" alt="Image 11" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/T4YkHjDe.jpg" alt="Image 12" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/Swr1v0lt.jpg" alt="Image 13" loading="lazy">
+        <img src="https://img2.imgtp.com/2024/03/22/Za5YEV0Y.jpg" alt="Image 14" loading="lazy">
+    </section>
+</div>
+<!-- Back to top button -->
+<div class="back-to-top" onclick="scrollToTop()">Back to Top</div>
+<script>
+    // Cool cursor following movement effect
+    document.addEventListener('mousemove', e => {
+        const cursor = document.querySelector('.cursor');
+        cursor.style.top = e.pageY + 'px';
+        cursor.style.left = e.pageX + 'px';
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Scroll to top functionality
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Show back to top button when scrolling
+    window.addEventListener('scroll', function() {
+        var backToTopBtn = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 100) {
+            backToTopBtn.style.display = 'block';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>
