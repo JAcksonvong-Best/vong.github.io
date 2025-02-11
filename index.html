@@ -1,253 +1,264 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Portfolio</title>
-    <style>
-        :root {
-            --primary: #2d3436;
-            --secondary: #636e72;
-            --bg: #ffffff;
-            --text: #2d3436;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Point Web Page</title>
+<style>
+    /* General styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1, h2 {
+        color: #333;
+        text-align: center;
+    }
+    p {
+        color: #666;
+        line-height: 1.6;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
+    /* Navigation styles */
+    nav {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #ff9900;
+    }
 
-        body {
-            background: var(--bg);
-            color: var(--text);
-            transition: background 0.5s ease;
-        }
+    /* Motion effects */
+    .section {
+        margin: 40px 0;
+        text-align: center;
+    }
+    .section img {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(212, 212, 212, 0.53);
+        transition: transform 0.3s ease;
+    }
+    .section img:hover {
+        transform: scale(1.05);
+    }
 
-        /* 导航栏 */
-        .nav {
-            padding: 1.5rem 8%;
-            position: fixed;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
-        }
+    /* Cool cursor effect */
+    .cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #ff9900;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+        transform: translate(-50%, -50%); /* Center the cursor */
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-        }
-
-        .nav-link {
-            cursor: pointer;
-            position: relative;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: 0.3s;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* 主内容区 */
-        section {
-            min-height: 100vh;
-            padding: 8rem 8% 4rem;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: 1s;
-        }
-
-        section.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 项目网格 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-
-        .project-card {
-            border-radius: 16px;
-            overflow: hidden;
-            transition: 0.4s;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);
-            z-index: 1;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: 0.4s;
-        }
-
-        .project-info {
-            position: absolute;
-            bottom: 0;
-            padding: 2rem;
-            color: white;
-            z-index: 2;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: 0.4s;
-        }
-
-        .project-card:hover .project-info {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* 操作按钮 */
-        .action-btns {
-            position: fixed;
-            right: 2rem;
-            bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 1000;
-        }
-
-        .action-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        /* 暗色模式 */
-        .dark-mode {
-            --primary: #dfe6e9;
-            --secondary: #b2bec3;
-            --bg: #2d3436;
-            --text: #ffffff;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    /* Back to top button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: none;
+        z-index: 9999;
+    }
+</style>
 </head>
 <body>
-    <nav class="nav">
-        <h1>PORTFOLIO</h1>
-        <div class="nav-links">
-            <div class="nav-link" data-target="home">首页</div>
-            <div class="nav-link" data-target="work">作品</div>
-            <div class="nav-link" data-target="about">关于</div>
-            <div class="nav-link" data-target="contact">联系</div>
-        </div>
-    </nav>
+<div class="cursor"></div>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">App one</a>
+    <a href="#services">App two</a>
+    <a href="#portfolio">Web</a>
+    <a href="#help">Mini APP</a>
+    <a href="#contact">H5</a>
+</nav>
+<div class="container"> 
+    <h1>温馨提示：顶部导航可点击跳转到相应位置🔝</h1>
+    <section id="home" class="section">
+        <h1>欢迎来到我的个人作品集网站</h1>
+        <p>UI Portfolio</p>
 
-    <section id="home" class="active">
-        <h1 style="font-size: 4rem; line-height: 1.2;">创意设计<br>数字体验</h1>
+        
+<img src="https://i.miji.bid/2025/02/11/0332153b0db8e1060abbc4104cac2f27.png" alt="0332153b0db8e1060abbc4104cac2f27.png" border="0">
     </section>
+    <section id="about" class="section">
+        <h2>友动力</h2>
+        <p>轻量化的运动健身/社交软件</p>
+        
+        
 
-    <section id="work">
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="https://source.unsplash.com/random/800x600?ui,1" class="project-image" alt="项目">
-                <div class="project-info">
-                    <h3>移动端应用设计</h3>
-                    <p>用户体验研究与实践案例</p>
-                </div>
-            </div>
-            <!-- 添加更多项目卡片 -->
-        </div>
+<img src="https://s2.loli.net/2024/06/03/OJrDR4e5wxYjkEX.jpg" alt="Image 2" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/8brFOclGTj4sn69.png" alt="Image 3" loading="lazy">
+<img src="https://i.miji.bid/2025/02/11/a391512d5b1d7952aef3c7766836d107.png" alt="a391512d5b1d7952aef3c7766836d107.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/26b72124ccc53d20b102de0f27f236ad.png" alt="26b72124ccc53d20b102de0f27f236ad.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/21950e1c12a9e1b498f354dec350f373.png" alt="21950e1c12a9e1b498f354dec350f373.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/d42721db723e8ce513d6dfd61b0ff8d3.png" alt="d42721db723e8ce513d6dfd61b0ff8d3.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/988918d0a930e7cac14199f8bdec9d5f.png" alt="988918d0a930e7cac14199f8bdec9d5f.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/a4f53f6ff5abcb93bf4c96aa20d6cf9c.png" alt="a4f53f6ff5abcb93bf4c96aa20d6cf9c.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/a65e1f36a52074daff3c29314287a433.png" alt="a65e1f36a52074daff3c29314287a433.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/b356f45134502d26602d56b9530e4b04.png" alt="b356f45134502d26602d56b9530e4b04.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/f590e4a67e11feab68f1c496d8fdd005.png" alt="f590e4a67e11feab68f1c496d8fdd005.png" border="0">
+
+<img src="https://i.miji.bid/2025/02/11/240c605012b0aadde9e6928fb74b7c93.png" alt="240c605012b0aadde9e6928fb74b7c93.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/82a2d2ff3aca23a2ee9755dbdc6afb66.png" alt="82a2d2ff3aca23a2ee9755dbdc6afb66.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/12fad6839066ef5edffa5a045ea7c456.png" alt="12fad6839066ef5edffa5a045ea7c456.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/e608d0682ef0694afac8dcbff93fb51a.png" alt="e608d0682ef0694afac8dcbff93fb51a.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/8f6512cffb231d41a7314926f6276f82.png" alt="8f6512cffb231d41a7314926f6276f82.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/a86017dec90abc44bcbc50a9d9c19858.png" alt="a86017dec90abc44bcbc50a9d9c19858.png" border="0">
+
+<img src="https://i.miji.bid/2025/02/11/bee4f141a58d1cc8d3fdbf9a8a31315e.png" alt="bee4f141a58d1cc8d3fdbf9a8a31315e.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/d154e1d659d7776bcadc34a4499dd6c1.png" alt="d154e1d659d7776bcadc34a4499dd6c1.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/ca9ec78e62f2a3748e9deb1399a64a22.png" alt="ca9ec78e62f2a3748e9deb1399a64a22.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/70ae21618c8f4e1f5a9019094dea5e07.png" alt="70ae21618c8f4e1f5a9019094dea5e07.png" border="0">
+<img src="https://i.miji.bid/2025/02/11/56506c620c06d033da305baae14baa12.png" alt="56506c620c06d033da305baae14baa12.png" border="0">
+        
+<img src="https://i.miji.bid/2025/02/11/a3f61083cd8f0efec1bacd20478ce7ce.png" alt="a3f61083cd8f0efec1bacd20478ce7ce.png" border="0">
+
+
     </section>
+    <section id="services" class="section">
+        <h2>有谱么（改版）</h2>
+        <p>音乐辅助工具和社交属性APP</p>
 
-    <div class="action-btns">
-        <div class="action-btn" id="toTop">↑</div>
-        <div class="action-btn" id="themeToggle">🌓</div>
-    </div>
+        
+        <img src="https://s2.loli.net/2024/06/03/ak5bd3KTMfGRlsc.jpg" alt="Image 1" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/QwUHV72Jvg1Mp9f.jpg" alt="Image 2" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/Yln4wWUOTyu2XGJ.png" alt="Image 3" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/kPnpfZMbhud6j9y.png" alt="Image 4" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/EVqeofYOKUHS2nz.jpg" alt="Image 5" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/h5m8lDQRETPk1Ap.jpg" alt="Image 6" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/xvSLBdhc3jiI1H4.png" alt="Image 7" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/3vDTseRVNko97Ew.png" alt="Image 8" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/eKMxHV2TgCZcQrU.png" alt="Image 9" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/Bh5qzoQfxFDE62k.jpg" alt="Image 10" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/QNW5xdoIY1z742L.png" alt="Image 11" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/sGo45cB1gDdKrW2.jpg" alt="Image 12" loading="lazy">
 
-    <script>
-        // 页面切换
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const target = document.getElementById(link.dataset.target);
-                document.querySelectorAll('section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                target.classList.add('active');
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            });
-        });
 
-        // 返回顶部
-        document.getElementById('toTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
+
+        
+    </section>
+    <section id="portfolio" class="section">
+        <h2>律所办公OA系统</h2>
+        <p>该系统适用于律师/法务团队进行案件管理、项目管理及团队的协作</p>
+    
+        <img src="https://s2.loli.net/2024/06/03/tmq65MHoOgLCwv8.png" alt="Image 1" loading="lazy">
+        <img src="https://s2.loli.net/2024/06/03/85JtRWsmg6OzcT1.png" alt="Image 1" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/Ktx9dqGHlMbOnI4.png" alt="Image 2" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/r4BKCyNYeDAoi3O.png" alt="Image 3" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/sCSbY8jgT6HtpZ4.png" alt="Image 4" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/9piSAoPV7RTYyDC.png" alt="Image 5" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/snHw2u74vjBMIdt.png" alt="Image 6" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/tJpoUDEHeKZznuB.png" alt="Image 7" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/ZaIVfS5hpFv87xw.png" alt="Image 8" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/WnEOSqv8VKu1emi.png" alt="Image 9" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/Rlb2W6y4kDZYEne.jpg" alt="Image 10" loading="lazy">
+
+
+
+        <h2>银色高地酒庄网页</h2>
+        <p>作为中国优质葡萄酒的先驱，银色高地一直致力于质量和可持续性</p>
+
+        <img src="https://s2.loli.net/2024/06/03/d63Jse2bfOtPy7k.jpg" alt="Image 1" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/fnpW9RYVSwZsUNa.jpg" alt="Image 2" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/evxMjLNwiRKOqBD.jpg" alt="Image 3" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/AL2wUNRrlYbmPHe.jpg" alt="Image 4" loading="lazy">
+
+    
+    <section id="help" class="section">
+        <h2>观鸟小程序</h2>
+        <p>鸟类知识科普🦅</p>
+        
+     <img src="https://s2.loli.net/2024/06/03/QRhXYcxiusTmwO3.png" alt="Image 4" loading="lazy">
+     <img src="https://s2.loli.net/2024/06/03/V9dq48eU5jnuwbN.png" alt="Image 1" loading="lazy">
+     <img src="https://s2.loli.net/2024/06/03/J4zaNVSdbLxBHMA.png" alt="Image 5" loading="lazy">
+     <img src="https://s2.loli.net/2024/06/03/6qDcIsVl5kRnMXy.png" alt="Image 2" loading="lazy">
+     <img src="https://s2.loli.net/2024/06/03/OMbENlfdPyGXUnY.jpg" alt="Image 3" loading="lazy">
+
+     
+
+
+       
+    </section>
+    
+    <section id="contact" class="section">
+        <h2>运营H5页面</h2>
+        <p>城市夜骑侠主题活动运营</p>
+
+        <img src="https://s2.loli.net/2024/06/03/kJh1Vv4pIBfXA9b.png" alt="Image 2" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/fvTpwuLYVN2Qqmx.png" alt="Image 1" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/IZKX8HsAqWV1Eto.jpg" alt="Image 2" loading="lazy">
+<img src="https://s2.loli.net/2024/06/03/1OAiKmg9fWzkGwh.jpg" alt="Image 3" loading="lazy">
+<img src="https://i.miji.bid/2025/02/11/6d90cb1958fe274b29df110f82084232.png" alt="6d90cb1958fe274b29df110f82084232.png" border="0">
+
+
+    </section>
+</div>
+<!-- Back to top button -->
+<div class="back-to-top" onclick="scrollToTop()">Back to Top</div>
+<script>
+    // Cool cursor following movement effect
+    document.addEventListener('mousemove', e => {
+        const cursor = document.querySelector('.cursor');
+        cursor.style.top = e.pageY + 'px';
+        cursor.style.left = e.pageX + 'px';
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
         });
+    });
 
-        // 暗色模式切换
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
+    // Scroll to top functionality
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    }
 
-        // 滚动动画
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // 页面加载动画
-        window.addEventListener('load', () => {
-            document.body.style.opacity = 1;
-        });
-    </script>
+    // Show back to top button when scrolling
+    window.addEventListener('scroll', function() {
+        var backToTopBtn = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 100) {
+            backToTopBtn.style.display = 'block';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
+    });
+</script>
 </body>
 </html>
